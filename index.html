@@ -2,30 +2,156 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Untitled Document</title>
 <script src="https://d3js.org/d3.v6.min.js"></script>
-
-<link rel="stylesheet" href="bundle.css">   
+<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <script async charset="utf-8" src="//cdn.iframe.ly/embed.js?api_key=bac3b281e7be748b06d55a&maxheight=300&omit_css=true"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel=" stylesheet" href="CSS/main.css">
+<link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet"> 
+<link href="CSS/bootstrap-4.4.1.css" rel="stylesheet" type="text/css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.js" ></script>
+    
+<script src="UI.js" defer></script>
 </head>
 <body>
-    
-    <header class="mdc-top-app-bar">
+<header class="mdc-top-app-bar mdc-top-app-bar--prominent">
   <div class="mdc-top-app-bar__row">
-    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-      <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" aria-label="Open navigation menu">menu</button>
-      <span class="mdc-top-app-bar__title">Page title</span>
-    </section>
-    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-      <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Favorite">favorite</button>
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start"> 
+      <!--<button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" aria-label="Open navigation menu">menu</button>--> 
+      <span class="mdc-top-app-bar__title title"><img src="Image/DREEM_Logo-1.png" height="80px"> </span> </section>
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar"> 
+      <!--<button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Favorite">favorite</button>
       <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Search">search</button>
-      <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options">more_vert</button>
+      <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options">more_vert</button>--> 
     </section>
   </div>
 </header>
-<main class="mdc-top-app-bar--fixed-adjust">
-  App content
+<main class="mdc-top-app-bar--prominent-fixed-adjust">
+
+
+    
+    
+    <!--Carosel-->
+    <div id="carousel">
+      <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel" data-interval="false" style="background-color: #313131">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
+          
+        </ol>
+        <div class="carousel-inner" role="listbox">
+          <div class="carousel-item active"> 
+              <div class="mdc-card mdc-card--outlined my-card">
+                  <div class="card-title title"><h3>DREEM Report Generator</h3></div>
+                  <div class="mdc-card__content" id="operations">
+                      <div class="row" id="output" >This area will populate with media sources once you select data for the report. <br />
+              Export your DREEM Google Form responses as a .csv file and upload it using the button below to get started.</div>
+                  
+                      
+                  </div>
+              <div class="mdc-card__actions">
+                <div class="mdc-card__action-buttons right">
+                      <input id="input" type="file">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators1" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
+    </div>
+
+   <div id="report">
+    <div id="wordCloud">
+    <!--Word Cloud-->
+        <h1  class="mainSectionTitle"> Keywords: </h1>
+        <svg id="demo1" width="900" height="200"></svg>
+    </div>
+
+    <div id="AutoethnographicReflections">
+    <!--Word Cloud-->
+        <h1 class="mainSectionTitle"> Autoethnographic Reflections: </h1>
+        <blockquote>Test</blockquote>
+    </div>
+       
+       
+       
+       
+           
+    <!--Data Table-->
+    <div id="table">
+    <div class="mdc-data-table">
+  <div class="mdc-data-table__table-container">
+    <table class="mdc-data-table__table" aria-label="Dessert calories" align="center">
+      <thead>
+        <tr class="mdc-data-table__header-row">
+          <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Dessert</th>
+          <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Carbs (g)</th>
+          <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Protein (g)</th>
+          <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Comments</th>
+        </tr>
+      </thead>
+      <tbody class="mdc-data-table__content">
+        <tr class="mdc-data-table__row">
+          <th class="mdc-data-table__cell" scope="row">Frozen yogurt</th>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.0</td>
+          <td class="mdc-data-table__cell">Super tasty</td>
+        </tr>
+        <tr class="mdc-data-table__row">
+          <th class="mdc-data-table__cell" scope="row">Ice cream sandwich</th>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">37</td>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">4.33333333333</td>
+          <td class="mdc-data-table__cell">I like ice cream more</td>
+        </tr>
+        <tr class="mdc-data-table__row">
+          <th class="mdc-data-table__cell" scope="row">Eclair</th>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">24</td>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">6.0</td>
+          <td class="mdc-data-table__cell">New filing flavor</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+        
+
+  <div class="mdc-data-table__progress-indicator">
+    <div class="mdc-data-table__scrim"></div>
+    <div class="mdc-linear-progress mdc-linear-progress--indeterminate mdc-data-table__linear-progress" role="progressbar" aria-label="Data is being loaded...">
+      <div class="mdc-linear-progress__buffer">
+        <div class="mdc-linear-progress__buffer-bar"></div>
+        <div class="mdc-linear-progress__buffer-dots"></div>
+      </div>
+      <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+        <span class="mdc-linear-progress__bar-inner"></span>
+      </div>
+      <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+        <span class="mdc-linear-progress__bar-inner"></span>
+      </div>
+    </div>
+  </div>
+</div>
+        
+        
+        
+
+        
+        
+        </div>
+       
+    
+       
+       
+    
+    </div>
 </main>
+<script src="js/jquery-3.4.1.min.js"></script> 
+<script src="js/popper.min.js"></script> 
+<script src="js/bootstrap-4.4.1.js"></script>
     
 </body>
-    <script src="UI.js"></script>
 </html>
