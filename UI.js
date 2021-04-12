@@ -30,6 +30,7 @@ function loadFile(event) {
     addButtons();
       wordCloud();
     fillCarousel();
+      addReflections();
       
   };
   // reader reads the text of the file, triggering the "onload" function
@@ -239,6 +240,25 @@ function fillCarousel() {
 
 
 //Word Cloud
+
+
+
+
+//refelections
+function addReflections(){
+    let meta = json.filter(function(d){return d['Meta Level Comment?'] == "Yes"});
+    let auto = json.filter(function(d){return d['Meta Level Comment?'] == "Auto-ethnographic Reflection"});
+    
+    meta.join(auto);
+    console.log(meta);
+    
+    meta.forEach(function(d,i){
+        var comment = d['Comments'];
+        $("#AutoethnographicReflections").append(`<blockquote>${comment}</blockquote>`);
+    })
+}
+
+
 
                  
 
