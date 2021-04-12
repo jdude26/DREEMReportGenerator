@@ -6,6 +6,7 @@ let json; // will hold the parsed JSON
 let output = document.getElementById("output"); // for easy access to this element
 var layout;
 var color = d3.scaleOrdinal(d3.schemeCategory10);
+var medias = [];
 
 // this function is called when a "change" event happens on the "input" element in the HTML
 function loadFile(event) {
@@ -28,9 +29,10 @@ function loadFile(event) {
     countRows();
 
     addButtons();
-      wordCloud();
+    wordCloud();
     fillCarousel();
-      addReflections();
+    addReflections();
+    //addCloseReadings();
       
   };
   // reader reads the text of the file, triggering the "onload" function
@@ -213,6 +215,8 @@ function fillCarousel() {
       }
     };
     request.send();
+      
+      medias.push(d)
      if(i == 1){
          active = "active";
 
@@ -260,6 +264,32 @@ function addReflections(){
 
 
 
+function addCloseReadings(){
+    var current = $('div.active').index();
+    let url = medias[current];
+    let closereadingsformedia = json.filter(function(d){return d['Media Source URL'] == url});
+    $("#closeReadings").html("");
+    
+   closereadingsformedia.forEach(function(d){
+       $("#closeReadings").append(`
+
+        <tr class="mdc-data-table__row">
+          <th class="mdc-data-table__cell" scope="row">${d['1-8 word Summary']}</th>
+          <td class="mdc-data-table__cell mdc-data-table__cell--numeric">${d['Start Time']}</td>
+          <td class="mdc-data-table__cell">${d['Email Address'].split('@')[0]}</td>
+          <td class="mdc-data-table__cell">${d['Comments']}</td>
+        </tr>
+    
+    `);
+   });
+}
+
+$(document).ready(function(){
+    
+    $('.carousel').on('slide.bs.carousel', function () {
+      addCloseReadings();
+    })
+});
                  
 
 //JARED^
